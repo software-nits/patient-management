@@ -48,4 +48,10 @@ public class PatientService {
         BeanUtils.copyProperties(patient, patientResponseDTO);
         return patientResponseDTO;
     }
+
+    public void deletePatient(String id) {
+        Patient patient = patientRepository.findById(UUID.fromString(id))
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+        patientRepository.delete(patient);
+    }
 }
