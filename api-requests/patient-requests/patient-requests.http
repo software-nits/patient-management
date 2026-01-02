@@ -1,0 +1,18 @@
+### GET request to example server
+GET http://localhost:7010/api/v1/patient
+
+###
+GET http://localhost:7010/api/v1/patient/999e4178-3f24-48b8-94e5-399db89eb255
+
+###
+
+POST  http://localhost:7010/api/v1/patient
+Content-Type: application/json
+
+{
+  "name": "Alice Johnson",
+  "email": "alice.johnson@example.com",
+  "address": "789 Pine St, Othertown, USA",
+  "registrationDate": "2023-01-02",
+  "dateOfBirth": "1995-02-01"
+}
