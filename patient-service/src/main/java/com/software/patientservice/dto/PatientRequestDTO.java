@@ -15,55 +15,43 @@ public class PatientRequestDTO {
     private String email;
     @NotBlank(message = "Address is required")
     private String address;
-    @NotBlank(message = "Date of Birth is required")
     private LocalDate dateOfBirth;
-    @NotBlank(message = "Registration Date is required")
     private LocalDate registrationDate;
 
-    public PatientRequestDTO() {
-    }
-    public PatientRequestDTO(String name, String email, String address, LocalDate dateOfBirth) {
-        this.name = name;
-        this.email = email;
-        this.address = address;
-        this.dateOfBirth = dateOfBirth;
-        this.registrationDate = LocalDate.now();
-    }
-    // Getters and Setters
-    public String getName() {
+    public @NotBlank(message = "Name is required") @Size(max = 100, message = "Name can have at most 100 characters") String getName() {
         return name;
     }
 
-    public String getEmail() {
+    public void setName(@NotBlank(message = "Name is required") @Size(max = 100, message = "Name can have at most 100 characters") String name) {
+        this.name = name;
+    }
+
+    public @NotBlank(message = "Email is required") @Email(message = "Email should be valid") String getEmail() {
         return email;
     }
 
-    public String getAddress() {
+    public void setEmail(@NotBlank(message = "Email is required") @Email(message = "Email should be valid") String email) {
+        this.email = email;
+    }
+
+    public @NotBlank(message = "Address is required") String getAddress() {
         return address;
+    }
+
+    public void setAddress(@NotBlank(message = "Address is required") String address) {
+        this.address = address;
     }
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
     }
 
     public void setRegistrationDate(LocalDate registrationDate) {
